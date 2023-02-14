@@ -30,8 +30,8 @@ function animate() {
   // draw lines for the inner pattern
   for (let i = 0; i < 20; i++) {
     let angle = (i / 20) * Math.PI * 2;
-    let x1 = Math.cos(angle) * (radius / 2);
-    let y1 = Math.sin(angle) * (radius / 2);
+    let x1 = Math.cos(angle) * (radius );
+    let y1 = Math.sin(angle) * (radius  );
     let x2 = Math.cos(angle) * (radius);
     let y2 = Math.sin(angle) * (radius);
 
