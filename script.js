@@ -46,13 +46,12 @@ function animate() {
     // draw filled circle
     let radius2 =10
     context.beginPath();
-    context.arc(canvas.width / 2, canvas.height / 2, radius2 / 4, 0, Math.PI * 2);
+    context.arc(canvas.width / 2, canvas.height / 2, 10 / 4, 0, Math.PI * 2);
     context.fillStyle = 'white';
     context.fill();
 
   // increase radius
-  radius2 += 1
-  radius += 0.5;
+  radius += 0.8;
   if (radius > maxRadius + 10) {
     radius = 10;
   }
