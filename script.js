@@ -23,7 +23,7 @@ function animate() {
     context.moveTo(canvas.width / 2 + x1, canvas.height / 2 + y1);
     context.lineTo(canvas.width / 2 + x2, canvas.height / 2 + y2);
     context.strokeStyle = "white";
-    context.lineWidth = 3;
+    context.lineWidth = 2;
     context.stroke();
   }
 
@@ -39,17 +39,19 @@ function animate() {
     context.moveTo(canvas.width / 2 + x1, canvas.height / 2 + y1);
     context.lineTo(canvas.width / 2 + x2, canvas.height / 2 + y2);
     context.strokeStyle = "white";
-    context.lineWidth = 5;
+    context.lineWidth = 2;
     context.stroke();
   }
 
     // draw filled circle
+    let radius2 =10
     context.beginPath();
-    context.arc(canvas.width / 2, canvas.height / 2, radius / 4, 0, Math.PI * 2);
+    context.arc(canvas.width / 2, canvas.height / 2, radius2 / 4, 0, Math.PI * 2);
     context.fillStyle = 'white';
     context.fill();
 
   // increase radius
+  radius2 += 1
   radius += 0.5;
   if (radius > maxRadius + 10) {
     radius = 10;
