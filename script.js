@@ -12,8 +12,8 @@ function animate() {
   context.clearRect(0, 0, canvas.width, canvas.height);
 
   // draw lines for the outer pattern
-  for (let i = 0; i < 20; i++) {
-    let angle = (i / 20) * Math.PI * 2;
+  for (let i = 0; i < 30; i++) {
+    let angle = (i / 30) * Math.PI * 2;
     let x1 = Math.cos(angle) * (canvas.width / 2 - radius);
     let y1 = Math.sin(angle) * (canvas.height / 2 - radius);
     let x2 = Math.cos(angle) * (radius);
@@ -23,13 +23,13 @@ function animate() {
     context.moveTo(canvas.width / 2 + x1, canvas.height / 2 + y1);
     context.lineTo(canvas.width / 2 + x2, canvas.height / 2 + y2);
     context.strokeStyle = "white";
-    context.lineWidth = 2;
+    context.lineWidth = 3;
     context.stroke();
   }
 
   // draw lines for the inner pattern
-  for (let i = 0; i < 20; i++) {
-    let angle = (i / 20) * Math.PI * 2;
+  for (let i = 0; i < 30; i++) {
+    let angle = (i / 30) * Math.PI * 2;
     let x1 = Math.cos(angle) * (radius );
     let y1 = Math.sin(angle) * (radius  );
     let x2 = Math.cos(angle) * (radius);
@@ -39,7 +39,7 @@ function animate() {
     context.moveTo(canvas.width / 2 + x1, canvas.height / 2 + y1);
     context.lineTo(canvas.width / 2 + x2, canvas.height / 2 + y2);
     context.strokeStyle = "white";
-    context.lineWidth = 2;
+    context.lineWidth = 3;
     context.stroke();
   }
 
@@ -51,8 +51,8 @@ function animate() {
 
   // draw  pattern inside the circle
 
-  for (let i = 0; i < 20; i++) {
-    let angle = (i / 20) * Math.PI * 2;
+  for (let i = 0; i < 30; i++) {
+    let angle = (i / 30) * Math.PI * 2;
     let x1 = Math.cos(angle) * (radius /6 );
     let y1 = Math.sin(angle) * (radius / 6);
     let x2 = Math.cos(angle) * (radius);
@@ -62,7 +62,7 @@ function animate() {
     context.moveTo(canvas.width / 2 + x1, canvas.height / 2 + y1);
     context.lineTo(canvas.width / 2 + x2, canvas.height / 2 + y2);
     context.strokeStyle = "white";
-    context.lineWidth = 2;
+    context.lineWidth = 3;
     context.stroke();
   }
 
