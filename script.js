@@ -1,9 +1,14 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
-context.setLineDash([15, 25]);
+context.fillStyle = "#fff";
 
-let radius = 10;
-let maxRadius = Math.min(canvas.width, canvas.height) / 2;
+let n = 0;
+let c = 10;
+let angle = 137.5;
+let direction = 1;
+
+const image = new Image();
+image.src = "./Kurage_logo_BlackBg.svg";
 
 function animate() {
   requestAnimationFrame(animate);
@@ -11,68 +16,37 @@ function animate() {
   // clear canvas
   context.clearRect(0, 0, canvas.width, canvas.height);
 
-  // draw lines for the outer pattern
-  for (let i = 0; i < 30; i++) {
-    let angle = (i / 30) * Math.PI * 2;
-    let x1 = Math.cos(angle) * (canvas.width / 2 - radius);
-    let y1 = Math.sin(angle) * (canvas.height / 2 - radius);
-    let x2 = Math.cos(angle) * (radius);
-    let y2 = Math.sin(angle) * (radius);
+  let maxRadius = Math.min(canvas.width, canvas.height);
+
+  
+  if (n <= 0) {
+    direction = 1;
+  }
+  if(n>maxRadius){
+    direction = -1
+  }
+
+  for (let i = 0; i < n; i++) {
+    let a = i * angle;
+    let r = c * Math.sqrt(i);
+
+    let x = r * Math.cos(a) + canvas.width / 2;
+    let y = r * Math.sin(a) + canvas.height / 2;
 
     context.beginPath();
-    context.moveTo(canvas.width / 2 + x1, canvas.height / 2 + y1);
-    context.lineTo(canvas.width / 2 + x2, canvas.height / 2 + y2);
-    context.strokeStyle = "white";
-    context.lineWidth = 3;
-    context.stroke();
+    context.arc(x, y, 4, 0, Math.PI * 2);
+    context.fill();
   }
 
-  // draw lines for the inner pattern
-  for (let i = 0; i < 30; i++) {
-    let angle = (i / 30) * Math.PI * 2;
-    let x1 = Math.cos(angle) * (radius );
-    let y1 = Math.sin(angle) * (radius  );
-    let x2 = Math.cos(angle) * (radius);
-    let y2 = Math.sin(angle) * (radius);
-
-    context.beginPath();
-    context.moveTo(canvas.width / 2 + x1, canvas.height / 2 + y1);
-    context.lineTo(canvas.width / 2 + x2, canvas.height / 2 + y2);
-    context.strokeStyle = "white";
-    context.lineWidth = 3;
-    context.stroke();
+  if (image.complete) {
+    let imageWidth = 100;
+    let imageHeight= 100;
+    let x = (canvas.width - imageWidth) / 2;
+    let y = (canvas.height - imageHeight) / 2;
+    context.drawImage(image, x, y, imageWidth, imageHeight);
   }
 
-  // draw filled circle
-  // context.beginPath();
-  // context.arc(canvas.width / 2, canvas.height / 2, radius / 2, 0, Math.PI * 2);
-  // context.fillStyle = 'white';
-  // context.fill();
-
-  // draw  pattern inside the circle
-
-  for (let i = 0; i < 30; i++) {
-    let angle = (i / 30) * Math.PI * 2;
-    let x1 = Math.cos(angle) * (radius /6 );
-    let y1 = Math.sin(angle) * (radius / 6);
-    let x2 = Math.cos(angle) * (radius);
-    let y2 = Math.sin(angle) * (radius);
-
-    context.beginPath();
-    context.moveTo(canvas.width / 2 + x1, canvas.height / 2 + y1);
-    context.lineTo(canvas.width / 2 + x2, canvas.height / 2 + y2);
-    context.strokeStyle = "white";
-    context.lineWidth = 3;
-    context.stroke();
-  }
-
-  // increase radius
-  radius += 0.5;
-
-  // reset radius if it's greater than maxRadius
-  if (radius > maxRadius) {
-    radius = 0;
-  }
+  n += direction;
 }
 
 animate();
